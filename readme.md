@@ -1,1 +1,2 @@
-First synchronised project
+#first js project
+First synchronized project
