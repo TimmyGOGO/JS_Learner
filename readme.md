@@ -1,2 +1,3 @@
-#first js project
-First synchronized project
+#repo for tasks
+Learning javascript
+
