@@ -1,10 +1,26 @@
-function update(event) {
-    let dot = document.createElement("div");
-    dot.className = "trail";
-    dot.style.left = (event.pageX - 4) + "px";
-    dot.style.top = (event.pageY - 4) + "px";
-    document.body.appendChild(dot);
+function startToAct(event) {
+    if (event.button == 0) { //if mouse left-button down
+        window.addEventListener("mousemove", leaveTrail);
+        event.preventDefault(); // Prevent selection
+    }
 }
+
+function leaveTrail(event) {
+    let trail = document.createElement("div");
+    trail.className = "trail";
+    trail.style.left = (event.pageX - 4) + "px";
+    trail.style.top = (event.pageY - 4) + "px";
+    document.body.appendChild(trail);
+}
+
+function finishToAct(event) {
+    if (event.button == 0) { //if mouse left-button up
+        window.removeEventListener("mousemove", leaveTrail);
+    }
+}
+
+window.addEventListener("mousedown", startToAct);
+window.addEventListener("mouseup", finishToAct)
     /*
     if (event == "mousemove"){
         setTimeout(() => {
@@ -14,16 +30,4 @@ function update(event) {
     }
     */
     //timeout = setTimeout(() => console.log("Typed!"), 500);
-    /*
-    for (let dot; dot = document.querySelector("trail");) {
-      dot.remove();
-    }
-    for (let i = 0; i < event.touches.length; i++) {
-      let {pageX, pageY} = event.touches[i];
-      let dot = document.createElement("dot");
-      dot.style.left = (pageX - 50) + "px";
-      dot.style.top = (pageY - 50) + "px";
-      document.body.appendChild(dot);
-    }
-    */
-window.addEventListener("mousemove", update);
+
